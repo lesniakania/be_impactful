@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production --config webpack.config.production.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

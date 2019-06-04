@@ -1,5 +1,7 @@
+const path = require('path');
+
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -14,5 +16,9 @@ module.exports = {
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
       }
     ]
+  },
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist')
   }
 };
