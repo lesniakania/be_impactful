@@ -5,10 +5,10 @@ import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 function App() {
   const loadMap = () => {
     mapboxgl.accessToken =
-      "pk.eyJ1IjoiYW5uYS1zbGltYWsiLCJhIjoiY2p2bWN4Ym5hMTdzcDQ5bWwxdTFocnlrdSJ9._dCxzb46y5Yvs9xDsfbQyg";
+      "pk.eyJ1IjoiY2FtZXJvbmVsbGlzIiwiYSI6InRHMGJHY0kifQ.Wv9TwqLWDLcJtiJMHD0PLA";
     var map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/streets-v11"
+      style: "mapbox://styles/cameronellis/cjnotuhgd1lav2smy0hiam9aq"
     });
   };
 
