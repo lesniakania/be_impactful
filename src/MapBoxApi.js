@@ -1,16 +1,11 @@
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
-
-const accessToken =
-  "pk.eyJ1IjoiY2FtZXJvbmVsbGlzIiwiYSI6InRHMGJHY0kifQ.Wv9TwqLWDLcJtiJMHD0PLA";
-const style = "mapbox://styles/cameronellis/cjnotuhgd1lav2smy0hiam9aq";
-const sourceLayer = "Nar3-4iz3xa";
-const layer = "nar3";
+import Config from "./Config";
 
 export function createMap() {
-  mapboxgl.accessToken = accessToken;
+  mapboxgl.accessToken = Config.accessToken;
   var map = new mapboxgl.Map({
     container: "map",
-    style: style
+    style: Config.style
   });
 
   return map;
@@ -35,7 +30,7 @@ function setHover(map, hoveredStateId, hover) {
   map.setFeatureState(
     {
       source: "composite",
-      sourceLayer: sourceLayer,
+      sourceLayer: Config.sourceLayer,
       id: hoveredStateId
     },
     { hover: hover }
@@ -50,7 +45,7 @@ export function addLayer(map) {
       id: "hovered-outlines",
       type: "line",
       source: "composite",
-      "source-layer": sourceLayer,
+      "source-layer": Config.sourceLayer,
       layout: {},
       paint: {
         "line-color": "hsl(56, 90%, 83%)",
@@ -68,6 +63,6 @@ export function addLayer(map) {
 
 export function on(map, event, callback) {
   map.on("load", () => {
-    map.on(event, layer, callback);
+    map.on(event, Config.layer, callback);
   });
 }
