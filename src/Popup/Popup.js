@@ -1,6 +1,7 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import PropTypes from "prop-types";
+import "./Popup.css";
 
 class Popup extends React.Component {
   fetcha(fecha) {

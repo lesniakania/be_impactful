@@ -4,7 +4,7 @@ import Config from "./Config";
 export function createMap() {
   mapboxgl.accessToken = Config.accessToken;
   var map = new mapboxgl.Map({
-    container: "map",
+    container: "rainforest-foundation-map",
     style: Config.style
   });
 
@@ -63,6 +63,6 @@ export function addLayer(map) {
 
 export function on(map, event, callback) {
   map.on("load", () => {
-    map.on(event, Config.layer, callback);
+    map.on(event, Config.layerName, callback);
   });
 }

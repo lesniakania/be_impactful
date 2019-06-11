@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
-import Popup from "../Popup";
+import Popup from "../Popup/Popup";
 import { addLayer, setCursor, changeHover, resetHover, on } from "../MapBoxApi";
+import "./Map.css";
 
 function Map(props) {
   useEffect(configureMap, [props.map]);
@@ -57,7 +58,7 @@ function Map(props) {
     });
   }
 
-  return <div id="map" />;
+  return <div id="rainforest-foundation-map" />;
 }
 
 Map.propTypes = {
