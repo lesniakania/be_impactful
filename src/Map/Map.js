@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import Popup from "../Popup";
-import {
-  createMap,
-  addLayer,
-  setCursor,
-  changeHover,
-  resetHover,
-  on
-} from "../MapBoxApi";
+import { addLayer, setCursor, changeHover, resetHover, on } from "../MapBoxApi";
 
-function Map() {
-  useEffect(loadMap, []);
+function Map(props) {
+  useEffect(configureMap, [props.map]);
   let [hoveredStateId, setHoverStateId] = useState(null);
 
-  function loadMap() {
-    const map = createMap();
-    addLayer(map);
-    bindEventListeners(map);
+  function configureMap() {
+    const { map } = props;
+
+    if (map) {
+      addLayer(map);
+      bindEventListeners(map);
+    }
   }
 
   function bindEventListeners(map) {
