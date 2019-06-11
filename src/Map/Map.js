@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import Popup from "../Popup";
 import { addLayer, setCursor, changeHover, resetHover, on } from "../MapBoxApi";
@@ -40,9 +41,6 @@ function Map(props) {
       // the code below to cause an error, so we just return
       if (!e.features[0]) return;
 
-      // Let's log to the console what we have
-      console.log(e.features[0]);
-
       // This just makes the code easier to read to see what is being done
       // You can use || to have an alternative default if the value is not set
       var imgSrc = e.features[0].properties.foto;
@@ -61,5 +59,9 @@ function Map(props) {
 
   return <div id="map" />;
 }
+
+Map.propTypes = {
+  map: PropTypes.object
+};
 
 export default Map;
