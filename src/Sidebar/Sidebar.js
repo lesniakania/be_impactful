@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Config from "../Config";
+import { queryRenderedFeatures, easeTo } from "../MapBoxApi";
+import Alert from "../Alert";
+import Popup from "../Popup/Popup";
 import "./Sidebar.css";
 
-function Alert(props) {
+function AlertItem(props) {
+  const { alert } = props;
+
+  const onClick = () => {
+    props.onClick(alert);
+  };
+
   return (
-    <li>
-      <h3>{props.name}</h3>
-      {props.description}
+    <li onClick={onClick}>
+      <h3>{alert.name}</h3>
+      {alert.description}
     </li>
   );
 }
 
-function alertPropsFromFeature(feature) {
-  const properties = feature.properties;
-  return { name: properties.Com, description: properties.Nar };
-}
-
 function Sidebar(props) {
+  let { map } = props;
+
   const fetchAlerts = () => {
-    let { map } = props;
-    map &&
-      map.on("load", () => {
-        const alerts = map
-          .queryRenderedFeatures({
-            layers: [Config.layerName]
-          })
-          .map(alertPropsFromFeature);
+    if (map) {
+      queryRenderedFeatures(map, features => {
+        const alerts = features.map(Alert);
         setAlerts(alerts);
       });
+    }
+  };
+
+  const onAlertClicked = alert => {
+    easeTo(map, alert);
+    const lngLat = { lng: alert.coordinates[0], lat: alert.coordinates[1] };
+    const popup = Popup.show(map, lngLat, alert);
+    props.onPopupShow(popup);
   };
 
   useEffect(fetchAlerts, [props.map]);
@@ -39,20 +47,21 @@ function Sidebar(props) {
       <h2>Alerts</h2>
       <ul>
         {alerts.map(alert => (
-          <Alert key={alert.name} {...alert} />
+          <AlertItem key={alert.name} onClick={onAlertClicked} alert={alert} />
         ))}
       </ul>
     </div>
   );
 }
 
-Alert.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+AlertItem.propTypes = {
+  alert: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 Sidebar.propTypes = {
-  map: PropTypes.object
+  map: PropTypes.object,
+  onPopupShow: PropTypes.func
 };
 
 export default Sidebar;

@@ -66,3 +66,23 @@ export function on(map, event, callback) {
     map.on(event, Config.layerName, callback);
   });
 }
+
+export function showPopup(map, lngLat, popupHtml) {
+  return new mapboxgl.Popup()
+    .setLngLat(lngLat)
+    .setHTML(popupHtml)
+    .addTo(map);
+}
+
+export function queryRenderedFeatures(map, callback) {
+  map.on("load", () => {
+    const features = map.queryRenderedFeatures({
+      layers: [Config.layerName]
+    });
+    callback(features);
+  });
+}
+
+export function easeTo(map, alert) {
+  map.easeTo({ center: alert.coordinates });
+}
