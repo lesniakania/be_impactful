@@ -2,6 +2,7 @@
   "name": "rainforest-map",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lunarlogic.github.io/rainforest-map/",
   "dependencies": {
     "mapbox-gl": "^1.0.0",
     "react": "^16.8.6",
@@ -9,7 +10,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack --mode production --config webpack.config.production.js"
+    "build": "webpack --mode production --config webpack.config.production.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -17,10 +20,13 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
+    "gh-pages": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "prettier": "^1.17.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.32.2",
