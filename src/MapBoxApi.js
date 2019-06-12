@@ -5,7 +5,9 @@ export function createMap() {
   mapboxgl.accessToken = Config.accessToken;
   var map = new mapboxgl.Map({
     container: "rainforest-foundation-map",
-    style: Config.style
+    center: [19, 49],
+    style: Config.style,
+    zoom: 4
   });
 
   return map;
