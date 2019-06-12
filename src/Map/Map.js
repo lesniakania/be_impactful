@@ -7,7 +7,7 @@ import "./Map.css";
 
 function Map(props) {
   useEffect(configureMap, [props.map]);
-  let [hoveredStateId, setHoverStateId] = useState(null);
+  let hoveredId = null;
 
   function configureMap() {
     const { map } = props;
@@ -24,15 +24,15 @@ function Map(props) {
 
       setCursor(map, "pointer");
 
-      const newHoveredStateId = e.features[0].id;
-      changeHover(map, hoveredStateId, newHoveredStateId);
-      setHoverStateId(newHoveredStateId);
+      const newHoverId = e.features[0].id;
+      changeHover(map, hoveredId, newHoverId);
+      hoveredId = newHoverId;
     });
 
     on(map, "mouseleave", () => {
-      resetHover(map, hoveredStateId);
+      resetHover(map, hoveredId);
 
-      setHoverStateId(null);
+      hoveredId = null;
       setCursor(map, "");
     });
 

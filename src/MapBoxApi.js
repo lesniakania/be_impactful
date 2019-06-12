@@ -43,18 +43,16 @@ export function addLayer(map) {
     // when a feature's hover state is set to true.
     map.addLayer({
       id: "hovered-outlines",
-      type: "line",
+      type: "fill",
       source: "composite",
       "source-layer": Config.sourceLayer,
       layout: {},
       paint: {
-        "line-color": "hsl(56, 90%, 83%)",
-        "line-width": 2,
-        "line-opacity": [
+        "fill-color": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
-          1,
-          0
+          Config.hoveredAreaColor,
+          Config.areaColor
         ]
       }
     });
