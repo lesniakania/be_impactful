@@ -1,8 +1,7 @@
 #rainforest-foundation-map-widget-root .sidebar {
   height: 100%;
-  display: flex;
   flex-direction: column;
-  flex: 1 0;
+  width: 400px;
 }
 
 #rainforest-foundation-map-widget-root .sidebar ul {
