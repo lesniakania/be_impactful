@@ -2,7 +2,7 @@ export default function Alert(feature) {
   const properties = feature.properties;
   return {
     key: "alert-" + properties.title.replace(" ", "_"),
-    coordinates: feature.geometry.coordinates[0][0],
+    coordinates: feature.geometry.coordinates,
     title: properties.title,
     category: properties.category,
     community: properties.community,

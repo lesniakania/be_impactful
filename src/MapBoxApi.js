@@ -5,12 +5,15 @@ export function createMap() {
   mapboxgl.accessToken = Config.accessToken;
   var map = new mapboxgl.Map({
     container: "rainforest-foundation-map",
-    center: [19, 49],
     style: Config.style,
-    zoom: 4
+    zoom: 0.5
   });
 
   return map;
+}
+
+export function setCenter(map, coordinates) {
+  map.setCenter(coordinates);
 }
 
 export function setCursor(map, cursor) {
@@ -83,6 +86,15 @@ export function queryRenderedFeatures(map, callback) {
   });
 }
 
-export function easeTo(map, alert) {
-  map.easeTo({ center: alert.coordinates });
+export function easeTo(map, coordinates) {
+  map.easeTo({
+    center: coordinates,
+    zoom: Config.defaultZoom,
+    speed: 0.05,
+    curve: 1,
+    bearing: 0,
+    easing: function(t) {
+      return t;
+    }
+  });
 }

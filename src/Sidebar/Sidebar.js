@@ -23,17 +23,29 @@ function AlertItem(props) {
 function Sidebar(props) {
   let { map } = props;
 
+  const setCenterToMiddleAlertPoint = alerts => {
+    let x = median(alerts.map(alert => alert.coordinates[0]));
+    let y = median(alerts.map(alert => alert.coordinates[1]));
+    easeTo(map, [x, y]);
+  };
+
+  function median(array) {
+    const sortedArray = array.sort();
+    return sortedArray[Math.floor(sortedArray.length / 2)];
+  }
+
   const fetchAlerts = () => {
     if (map) {
       queryRenderedFeatures(map, features => {
         const alerts = features.map(Alert);
         setAlerts(alerts);
+        setCenterToMiddleAlertPoint(alerts);
       });
     }
   };
 
   const onAlertClicked = alert => {
-    easeTo(map, alert);
+    easeTo(map, alert.coordinates);
     const lngLat = { lng: alert.coordinates[0], lat: alert.coordinates[1] };
     const popup = Popup.show(map, lngLat, alert);
     props.onPopupShow(popup);
@@ -47,7 +59,7 @@ function Sidebar(props) {
       <h2>Alerts</h2>
       <ul>
         {alerts.map(alert => (
-          <AlertItem key={alert.name} onClick={onAlertClicked} alert={alert} />
+          <AlertItem key={alert.key} onClick={onAlertClicked} alert={alert} />
         ))}
       </ul>
     </div>
