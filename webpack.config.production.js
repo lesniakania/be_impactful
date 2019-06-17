@@ -1,23 +1,12 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpackLoaders = require("./webpack-loaders");
 
 module.exports = {
   mode: "production",
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-      }
-    ]
+    rules: webpackLoaders
   },
   plugins: [
     // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin

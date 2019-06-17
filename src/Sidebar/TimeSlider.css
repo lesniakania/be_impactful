@@ -6,7 +6,7 @@
   left: 0;
   bottom: 0;
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 #rainforest-foundation-map-widget-root .time-slider__title {
@@ -16,27 +16,26 @@
   color: #787e85;
 }
 
-
 #rainforest-foundation-map-widget-root select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-position: right center;
   background-color: transparent;
-  /* background-image: url("./icon_chevron.svg"); */
+  background-image: url("./icon_chevron.svg");
   font-family: inherit;
   font-size: 16px;
-  /* background: {
+  background: {
     image: url($svg-select-icon);
     repeat: no-repeat;
     position: right 10px center;
     color: transparent;
-  } */
+  }
   padding: 0.5rem;
   padding-right: 28px;
   margin-right: 1rem;
   text-indent: 0.01px;
-  text-overflow: '';
+  text-overflow: "";
   cursor: pointer;
 }
 
@@ -55,5 +54,4 @@ select::-ms-expand {
 
 #rainforest-foundation-map-widget-root .month-slider__input {
   margin: 0 1rem 1rem 0;
-
 }
