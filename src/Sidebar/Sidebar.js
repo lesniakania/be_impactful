@@ -14,9 +14,9 @@ function AlertItem(props) {
   };
 
   return (
-    <li onClick={onClick}>
-      <h3>{alert.title}</h3>
-      {alert.description}
+    <li className="alert__item" onClick={onClick}>
+      <h3 className="alert__title">{alert.title}</h3>
+      <p className="alert__desc">{alert.description}</p>
     </li>
   );
 }
@@ -57,7 +57,7 @@ function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <h2>Alerts</h2>
+      <h2 className="title">Alerts</h2>
       <ul>
         {alerts.map(alert => (
           <AlertItem key={alert.key} onClick={onAlertClicked} alert={alert} />

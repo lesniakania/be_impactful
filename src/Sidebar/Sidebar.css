@@ -1,9 +1,42 @@
 #rainforest-foundation-map-widget-root .sidebar {
   height: 100%;
+  overflow-y: scroll;
   flex-direction: column;
-  width: 400px;
+  width: 50%;
+  max-width: 400px;
+  position: relative;
+  padding-bottom: 9rem;
+}
+
+#rainforest-foundation-map-widget-root .title {
+  padding: 0 1rem;
+  color: #d0374d;
 }
 
 #rainforest-foundation-map-widget-root .sidebar ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#rainforest-foundation-map-widget-root .alert__item {
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+
+#rainforest-foundation-map-widget-root .alert__item:hover,
+#rainforest-foundation-map-widget-root .alert__item:focus {
+  cursor: pointer;
+  background-color: #eceff3;
+}
+
+#rainforest-foundation-map-widget-root .alert__title {
+  margin: 0;
+  word-break: break-word;
+}
+
+#rainforest-foundation-map-widget-root .alert__desc {
+  margin: 0.5rem 0 0;
+  font-size: 14px;
 }

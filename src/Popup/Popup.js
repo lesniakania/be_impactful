@@ -14,7 +14,7 @@ class Popup extends React.Component {
       datesArray.push(`Alert date: ${this.props.alertDate}`);
     }
 
-    return <h6>{datesArray.join(", ")}</h6>;
+    return <p className="popup__date">{datesArray.join(", ")}</p>;
   }
 
   action() {
@@ -27,22 +27,24 @@ class Popup extends React.Component {
     const ul = this.props.photos.map((photoUrl, index) => {
       return (
         <li key={`photo-${index}`}>
-          <img src={photoUrl} alt="photo" />
+          <img src={photoUrl} alt="photo" className="popup__photo" />
         </li>
       );
     });
-    return <ul>{ul}</ul>;
+    return <ul className="popup__photos-list">{ul}</ul>;
   }
 
   render() {
     return (
       <div>
-        <h3>{this.props.title}</h3>
-        <h5>
+        <h3 className="popup__title">{this.props.title}</h3>
+        <p className="popup__info">
           {this.props.category}, {this.props.community}
-        </h5>
+        </p>
+        <p className="popup__desc">
+          {this.props.description}
+        </p>
         {this.dates()}
-        {this.props.description}
 
         {this.action()}
         {this.photos()}
