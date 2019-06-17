@@ -15,7 +15,7 @@ function AlertItem(props) {
 
   return (
     <li onClick={onClick}>
-      <h3>{alert.name}</h3>
+      <h3>{alert.title}</h3>
       {alert.description}
     </li>
   );
