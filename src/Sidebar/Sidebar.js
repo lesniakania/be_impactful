@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { queryRenderedFeatures, easeTo } from "../MapBoxApi";
 import Alert from "../Alert";
 import Popup from "../Popup/Popup";
+import TimeSlider from "./TimeSlider";
 import "./Sidebar.css";
 
 function AlertItem(props) {
@@ -62,6 +63,7 @@ function Sidebar(props) {
           <AlertItem key={alert.key} onClick={onAlertClicked} alert={alert} />
         ))}
       </ul>
+      <TimeSlider />
     </div>
   );
 }
