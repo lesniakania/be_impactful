@@ -19,7 +19,13 @@ class Popup extends React.Component {
 
   action() {
     if (this.props.action) {
-      return <div>{this.props.action}</div>;
+      return (
+        <div>
+          <a href={this.props.action} target="_blank" rel="noopener noreferrer">
+            {this.props.action}
+          </a>
+        </div>
+      );
     }
   }
 
@@ -27,7 +33,9 @@ class Popup extends React.Component {
     const ul = this.props.photos.map((photoUrl, index) => {
       return (
         <li key={`photo-${index}`}>
-          <img src={photoUrl} alt="photo" className="popup__photo" />
+          <a href={photoUrl} target="_blank" rel="noopener noreferrer">
+            <img src={photoUrl} alt="photo" className="popup__photo" />
+          </a>
         </li>
       );
     });
@@ -41,9 +49,7 @@ class Popup extends React.Component {
         <p className="popup__info">
           {this.props.category}, {this.props.community}
         </p>
-        <p className="popup__desc">
-          {this.props.description}
-        </p>
+        <p className="popup__desc">{this.props.description}</p>
         {this.dates()}
 
         {this.action()}
