@@ -1,14 +1,16 @@
 # rainforest-map
+
 A map widget for Rainforest Foundation
 
-
 ## Development
+
 ```
 npm install
 npm start
 ```
 
 ## Production
+
 ```
 npm run build
 ```
@@ -19,4 +21,10 @@ You can use a widget in any html page like that:
 
 ```html
 <script src="path-to-generated-main-js-bundle"></script>
+```
+
+Or you can deploy example to [Github Pages](https://lunarlogic.github.io/rainforest-map/):
+
+```
+npm run deploy
 ```
