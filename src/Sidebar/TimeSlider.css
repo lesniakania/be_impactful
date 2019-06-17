@@ -23,14 +23,11 @@
   background-position: right center;
   background-color: transparent;
   background-image: url("./icon_chevron.svg");
+  background-repeat: no-repeat;
+  background-size: 15px auto;
+  background-position: right 5px center;
   font-family: inherit;
   font-size: 16px;
-  background: {
-    image: url($svg-select-icon);
-    repeat: no-repeat;
-    position: right 10px center;
-    color: transparent;
-  }
   padding: 0.5rem;
   padding-right: 28px;
   margin-right: 1rem;
