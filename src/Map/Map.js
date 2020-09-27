@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Popup from "../Popup/Popup";
 import { addLayer, setCursor, changeHover, resetHover, on } from "../MapBoxApi";
-import Alert from "../Alert";
+import Organization from "../Organization";
 import "./Map.css";
 
 function Map(props) {
@@ -19,7 +19,7 @@ function Map(props) {
   }
 
   function bindEventListeners(map) {
-    on(map, "mousemove", e => {
+    on(map, "mousemove", (e) => {
       if (!e.features[0]) return;
 
       setCursor(map, "pointer");
@@ -36,21 +36,21 @@ function Map(props) {
       setCursor(map, "");
     });
 
-    on(map, "click", e => {
+    on(map, "click", (e) => {
       if (!e.features[0]) return;
 
-      const alert = Alert(e.features[0]);
-      const popup = Popup.show(map, e.lngLat, alert);
+      const organization = Organization(e.features[0]);
+      const popup = Popup.show(map, e.lngLat, organization);
       props.onPopupShow(popup);
     });
   }
 
-  return <div id="rainforest-foundation-map" />;
+  return <div id="map-container" />;
 }
 
 Map.propTypes = {
   map: PropTypes.object,
-  onPopupShow: PropTypes.func
+  onPopupShow: PropTypes.func,
 };
 
 export default Map;

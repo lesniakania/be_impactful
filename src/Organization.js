@@ -1,25 +1,16 @@
-export default function Alert(feature) {
+export default function Organization(feature) {
   const properties = feature.properties;
   return {
-    key: "alert-" + properties.title.replace(" ", "_"),
+    key: "organization-" + properties.title.replace(" ", "_"),
     coordinates: coordinates(feature),
     title: properties.title,
-    category: properties.category,
-    community: properties.community,
     description: properties.description,
-    action: properties.action,
-    photos: photos(properties),
-    alertDate: properties.alert_date,
-    fieldDate: properties.field_date
+    category: properties.category,
+    address: properties.address,
+    url: properties.url,
+    email: properties.email,
+    phone: properties.phone,
   };
-}
-
-function photos(properties) {
-  if (properties.photos) {
-    return JSON.parse(properties.photos);
-  } else {
-    return [];
-  }
 }
 
 function coordinates(feature) {

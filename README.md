@@ -1,8 +1,10 @@
-# rainforest-map
+# Be Impactful
 
-A map widget for Rainforest Foundation
+A map widget for Impact Working Group #omgkrk
 
 ## Development
+
+Create `.env` file with `MAPBOX_ACCESS_TOKEN=token`
 
 ```
 npm install
@@ -23,7 +25,7 @@ You can use a widget in any html page like that:
 <script src="path-to-generated-main-js-bundle"></script>
 ```
 
-Or you can deploy example to [Github Pages](https://lunarlogic.github.io/rainforest-map/):
+Or you can deploy example to [Github Pages](https://lesniakania.github.io/be_impactful/):
 
 ```
 npm run deploy
@@ -31,8 +33,7 @@ npm run deploy
 
 ## How to feed widget with data
 
-1. Generate geojson file using csv file format we agreed on (name, desc, category, village, foto1, foto2, action, field_date,
-   alert_date).
+1. Generate geojson file using csv file. Data needed: sdg_ids, name, type_ids, impact_description, description, website, contact_email, latitude, longitude
 
 ```
 npm run generate-geojson ~/path-to-the.csv
@@ -44,4 +45,4 @@ Generated geojson file should be in `./data` directory.
 3. Create a tileset from this dataset.
 4. Add a layer with this tileset/dataset in the custom style.
 5. Update ./src/Config.js - `style`, `sourceLayer` (dataset name), `layerName` (layer name you added to the style)
-6. Make sure that you use correct `accessToken`
+6. Make sure that you use correct `accessToken` (placed in `.env` as `MAPBOX_ACCESS_TOKEN=token`)

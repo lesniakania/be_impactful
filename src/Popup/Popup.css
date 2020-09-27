@@ -1,47 +1,47 @@
-#rainforest-foundation-map-widget-root .mapboxgl-map {
+#map-widget-root .mapboxgl-map {
   font-size: 16px;
 }
 
-#rainforest-foundation-map-widget-root .mapboxgl-popup-close-button {
+#map-widget-root .mapboxgl-popup-close-button {
   font-size: 20px;
 }
 
-#rainforest-foundation-map-widget-root .mapboxgl-popup-content {
+#map-widget-root .mapboxgl-popup-content {
   max-width: 280px;
   border-radius: 0px;
   word-break: break-word;
 }
 
-#rainforest-foundation-map-widget-root .popup__photos-list {
+#map-widget-root .popup__photos-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-#rainforest-foundation-map-widget-root .popup__photo {
+#map-widget-root .popup__photo {
   display: block;
   max-width: 100%;
   max-height: 10rem;
   margin: 0 0 1rem;
 }
 
-#rainforest-foundation-map-widget-root .popup__title {
+#map-widget-root .popup__title {
   margin: 1rem 0 0;
 }
 
-#rainforest-foundation-map-widget-root .popup__info {
+#map-widget-root .popup__info {
   margin: 0.5rem 0;
   font-size: 1rem;
 }
 
-#rainforest-foundation-map-widget-root .popup__date {
+#map-widget-root .popup__date {
   font-size: 14px;
   margin: 0 0 1rem;
   padding: 0.25rem 0.5rem;
   background-color: #eceff3;
 }
 
-#rainforest-foundation-map-widget-root .popup__desc {
+#map-widget-root .popup__desc {
   font-size: 14px;
   margin: 0;
   padding: 0.5rem 0;

@@ -13,16 +13,15 @@ if (args.length < 3) {
 
 async function main() {
   const json = await jsonFromCSVFile(csvFilePath);
-  const alerts = uniqueAlerts(json);
-  const features = alerts.map(featureFromJson);
+  const features = json.map(featureFromJson);
 
   const geoJson = {
     type: "FeatureCollection",
-    features: features
+    features: features,
   };
 
   const geoJsonFilePath = "./data/dataset.geo.json";
-  fs.writeFile(geoJsonFilePath, JSON.stringify(geoJson), error => {
+  fs.writeFile(geoJsonFilePath, JSON.stringify(geoJson), (error) => {
     if (error) {
       console.error("There was an issue with saving geoJSON file - " + error);
     } else {
@@ -36,19 +35,21 @@ function featureFromJson(feature) {
   return {
     geometry: {
       type: "Point",
-      coordinates: [parseFloat(feature.X), parseFloat(feature.Y)]
+      coordinates: [
+        parseFloat(feature.latitude),
+        parseFloat(feature.longitude),
+      ],
     },
     type: "Feature",
     properties: {
-      title: ensurePresence(feature.name),
-      description: ensurePresence(feature.desc),
-      category: ensurePresence(feature.category),
-      community: ensurePresence(feature.village),
-      photos: [feature.foto1, feature.foto2].filter(ensurePresence),
-      action: ensurePresence(feature.action),
-      field_date: ensurePresence(feature.field_date),
-      alert_date: ensurePresence(feature.alert_date)
-    }
+      sdg_ids: arrayProperty(ensurePresence(feature.sdg_ids)),
+      name: ensurePresence(feature.name),
+      type_ids: arrayProperty(ensurePresence(feature.type_ids)),
+      impact_description: ensurePresence(feature.impact_description),
+      description: feature.description,
+      website: ensurePresence(feature.website),
+      contact_email: feature.contact_email,
+    },
   };
 }
 
@@ -57,16 +58,10 @@ function ensurePresence(thing) {
   else return null;
 }
 
-function jsonFromCSVFile(csvFilePath) {
-  return csvtojson().fromFile(csvFilePath);
+function arrayProperty(string) {
+  return string.split(",");
 }
 
-function uniqueAlerts(alerts) {
-  let unique = {};
-
-  alerts.forEach(alert => {
-    unique[alert.name] = alert;
-  });
-
-  return Object.keys(unique).map(k => unique[k]);
+function jsonFromCSVFile(csvFilePath) {
+  return csvtojson().fromFile(csvFilePath);
 }
