@@ -36,8 +36,8 @@ function featureFromJson(feature) {
     geometry: {
       type: "Point",
       coordinates: [
-        parseFloat(feature.latitude),
         parseFloat(feature.longitude),
+        parseFloat(feature.latitude),
       ],
     },
     type: "Feature",
