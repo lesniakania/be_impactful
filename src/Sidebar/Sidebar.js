@@ -5,12 +5,6 @@ import Organization from "../Organization";
 import Popup from "../Popup/Popup";
 import "./Sidebar.css";
 
-const MAP = {
-  "in-need": "In need",
-  helpers: "Helpers",
-  "potential-sponsors": "Potential sponsors",
-};
-
 function OrganizationItem(props) {
   const { organization } = props;
 
@@ -21,7 +15,6 @@ function OrganizationItem(props) {
   return (
     <li className="organization__item" onClick={onClick}>
       <h3 className="organization__title">{organization.title}</h3>
-      <p>{category(organization.category)}</p>
       <p>
         <a href={`${organization.url}`}>{`${organization.url}`}</a>
       </p>
@@ -31,10 +24,6 @@ function OrganizationItem(props) {
       <p>{organization.description}</p>
     </li>
   );
-}
-
-function category(category) {
-  return MAP[category];
 }
 
 function Sidebar(props) {
@@ -80,7 +69,7 @@ function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <h2 className="title">organizations</h2>
+      <h2 className="title">Organizations</h2>
       <ul>
         {organizations.map((organization) => (
           <OrganizationItem

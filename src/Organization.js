@@ -1,7 +1,7 @@
 export default function Organization(feature) {
   const properties = feature.properties;
   return {
-    key: "organization-" + properties.title.replace(" ", "_"),
+    key: "organization-" + properties.id,
     coordinates: coordinates(feature),
     title: properties.title,
     description: properties.description,
