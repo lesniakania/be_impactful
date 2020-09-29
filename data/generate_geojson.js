@@ -20,7 +20,7 @@ async function main() {
     features: features,
   };
 
-  const geoJsonFilePath = "./data/dataset.geo.json";
+  const geoJsonFilePath = "./data/organizations.geo.json";
   fs.writeFile(geoJsonFilePath, JSON.stringify(geoJson), (error) => {
     if (error) {
       console.error("There was an issue with saving geoJSON file - " + error);
@@ -42,13 +42,7 @@ function featureFromJson(feature) {
     },
     type: "Feature",
     properties: {
-      sdg_ids: arrayProperty(ensurePresence(feature.sdg_ids)),
-      name: ensurePresence(feature.name),
-      type_ids: arrayProperty(ensurePresence(feature.type_ids)),
-      impact_description: ensurePresence(feature.impact_description),
-      description: feature.description,
-      website: ensurePresence(feature.website),
-      contact_email: feature.contact_email,
+      id: ensurePresence(feature.id),
     },
   };
 }
@@ -56,10 +50,6 @@ function featureFromJson(feature) {
 function ensurePresence(thing) {
   if (thing != "" && thing != "0") return thing;
   else return null;
-}
-
-function arrayProperty(string) {
-  return string.split(",");
 }
 
 function jsonFromCSVFile(csvFilePath) {

@@ -33,7 +33,7 @@ npm run deploy
 
 ## How to feed widget with data
 
-1. Generate geojson file using csv file. Data needed: sdg_ids, name, type_ids, impact_description, description, website, contact_email, latitude, longitude
+1. Generate geojson file using csv file. Data needed: id, latitude, longitude
 
 ```
 npm run generate-geojson ~/path-to-the.csv
