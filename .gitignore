@@ -11,7 +11,8 @@
 # production
 /build
 /dist
-/data/dataset.geo.json
+/data/*.geo.json
+/data/*.csv
 
 # misc
 .DS_Store
