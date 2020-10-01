@@ -14,7 +14,7 @@ async function main() {
   eachOrganization(
     base,
     tableName,
-    (records) => {
+    records => {
       records.forEach(function(record) {
         const organization = buildOrganization(record);
         organizations.push(organization);
@@ -50,7 +50,7 @@ function buildOrganization(record) {
   return {
     id: record.id,
     latitude: record.get("Latitude"),
-    longitude: record.get("Longitude"),
+    longitude: record.get("Longitude")
   };
 }
 

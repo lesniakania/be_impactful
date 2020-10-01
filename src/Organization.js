@@ -9,7 +9,7 @@ export default function Organization(feature) {
     address: properties.address,
     url: properties.url,
     email: properties.email,
-    phone: properties.phone,
+    phone: properties.phone
   };
 }
 

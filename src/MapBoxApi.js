@@ -6,7 +6,7 @@ export function createMap() {
   var map = new mapboxgl.Map({
     container: "map-container",
     style: Config.style,
-    zoom: 0.5,
+    zoom: 0.5
   });
 
   return map;
@@ -36,7 +36,7 @@ function setHover(map, hoveredStateId, hover) {
     {
       source: "composite",
       sourceLayer: Config.sourceLayer,
-      id: hoveredStateId,
+      id: hoveredStateId
     },
     { hover: hover }
   );
@@ -57,9 +57,9 @@ export function addLayer(map) {
           "case",
           ["boolean", ["feature-state", "hover"], false],
           Config.hoveredAreaColor,
-          Config.areaColor,
-        ],
-      },
+          Config.areaColor
+        ]
+      }
     });
   });
 }
@@ -80,7 +80,7 @@ export function showPopup(map, lngLat, popupHtml) {
 export function queryRenderedFeatures(map, callback) {
   map.on("load", () => {
     const features = map.queryRenderedFeatures({
-      layers: [Config.layerName],
+      layers: [Config.layerName]
     });
     callback(features);
   });
@@ -95,6 +95,6 @@ export function easeTo(map, coordinates) {
     bearing: 0,
     easing: function(t) {
       return t;
-    },
+    }
   });
 }
