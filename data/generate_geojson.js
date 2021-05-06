@@ -17,11 +17,11 @@ async function main() {
 
   const geoJson = {
     type: "FeatureCollection",
-    features: features,
+    features: features
   };
 
   const geoJsonFilePath = "./data/organizations.geo.json";
-  fs.writeFile(geoJsonFilePath, JSON.stringify(geoJson), (error) => {
+  fs.writeFile(geoJsonFilePath, JSON.stringify(geoJson), error => {
     if (error) {
       console.error("There was an issue with saving geoJSON file - " + error);
     } else {
@@ -33,17 +33,8 @@ main();
 
 function featureFromJson(feature) {
   return {
-    geometry: {
-      type: "Point",
-      coordinates: [
-        parseFloat(feature.longitude),
-        parseFloat(feature.latitude),
-      ],
-    },
-    type: "Feature",
-    properties: {
-      id: ensurePresence(feature.id),
-    },
+    id: ensurePresence(feature.id),
+    name: feature.name
   };
 }
 

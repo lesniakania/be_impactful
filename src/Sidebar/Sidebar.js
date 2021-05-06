@@ -4,6 +4,7 @@ import { queryRenderedFeatures, easeTo } from "../MapBoxApi";
 import Organization from "../Organization";
 import Popup from "../Popup/Popup";
 import "./Sidebar.css";
+var organizationsData = require("../../data/organizations.geo.json");
 
 function OrganizationItem(props) {
   const { organization } = props;
@@ -14,7 +15,7 @@ function OrganizationItem(props) {
 
   return (
     <li className="organization__item" onClick={onClick}>
-      <h3 className="organization__title">{organization.title}</h3>
+      <h3 className="organization__title">{organization.name}</h3>
       <p>
         <a href={`${organization.url}`}>{`${organization.url}`}</a>
       </p>
@@ -29,12 +30,12 @@ function OrganizationItem(props) {
 function Sidebar(props) {
   let { map } = props;
 
-  const setCenterToMiddleOrganizationPoint = (organizations) => {
+  const setCenterToMiddleOrganizationPoint = organizations => {
     let x = median(
-      organizations.map((organization) => organization.coordinates[0])
+      organizations.map(organization => organization.coordinates[0])
     );
     let y = median(
-      organizations.map((organization) => organization.coordinates[1])
+      organizations.map(organization => organization.coordinates[1])
     );
     easeTo(map, [x, y]);
   };
@@ -46,19 +47,16 @@ function Sidebar(props) {
 
   const fetchOrganizations = () => {
     if (map) {
-      queryRenderedFeatures(map, (features) => {
-        const orientations = features.map(Organization);
-        setOrganizations(orientations);
-        setCenterToMiddleOrganizationPoint(orientations);
-      });
+      console.log(organizationsData);
+      setOrganizations(organizationsData.features);
     }
   };
 
-  const onOrganizationClicked = (organization) => {
+  const onOrganizationClicked = organization => {
     easeTo(map, organization.coordinates);
     const lngLat = {
       lng: organization.coordinates[0],
-      lat: organization.coordinates[1],
+      lat: organization.coordinates[1]
     };
     const popup = Popup.show(map, lngLat, organization);
     props.onPopupShow(popup);
@@ -71,9 +69,9 @@ function Sidebar(props) {
     <div className="sidebar">
       <h2 className="title">Organizations</h2>
       <ul>
-        {organizations.map((organization) => (
+        {organizations.map(organization => (
           <OrganizationItem
-            key={organization.key}
+            key={organization.id}
             onClick={onOrganizationClicked}
             organization={organization}
           />
@@ -85,12 +83,12 @@ function Sidebar(props) {
 
 OrganizationItem.propTypes = {
   organization: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 Sidebar.propTypes = {
   map: PropTypes.object,
-  onPopupShow: PropTypes.func,
+  onPopupShow: PropTypes.func
 };
 
 export default Sidebar;

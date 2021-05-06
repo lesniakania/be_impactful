@@ -49,6 +49,7 @@ function eachOrganization(base, tableName, eachBlock, doneBlock) {
 function buildOrganization(record) {
   return {
     id: record.id,
+    name: record.get("Name"),
     latitude: record.get("Latitude"),
     longitude: record.get("Longitude")
   };
